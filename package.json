@@ -1,0 +1,29 @@
+{
+  "name": "backendieee_api",
+  "version": "1.0.0",
+  "description": "This project is the rest API of the student branch of University El Bosque",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/falfonsoPrg/BackEndIEEE_API.git"
+  },
+  "keywords": [
+    "API",
+    "IEEE"
+  ],
+  "author": "University El Bosque",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/falfonsoPrg/BackEndIEEE_API/issues"
+  },
+  "homepage": "https://github.com/falfonsoPrg/BackEndIEEE_API#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
