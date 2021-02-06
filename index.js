@@ -32,5 +32,5 @@ app.get('/',(req,res)=>{
 
 //Initialize the server
 app.listen(port,() => {
-    console.log('Server en el puerto ' + port)
+    console.log('Server on port ' + port)
 }) 
