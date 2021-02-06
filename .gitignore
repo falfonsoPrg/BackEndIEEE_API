@@ -2,3 +2,4 @@
 /server/node_modules
 /server/.ENV
 /server/src/keys.ts
+/server/uploads
