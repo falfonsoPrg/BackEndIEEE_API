@@ -4,8 +4,8 @@
   "description": "This project is the rest API of the student branch of University El Bosque",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "node swagger.js",
+    "dev": "nodemon swagger.js --ignore swagger_output.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,11 +23,17 @@
   },
   "homepage": "https://github.com/falfonsoPrg/BackEndIEEE_API#readme",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mysql2": "^2.2.5",
-    "sequelize": "^6.5.0"
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.5.0",
+    "swagger-autogen": "^2.5.12",
+    "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
