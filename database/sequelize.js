@@ -24,14 +24,38 @@ const sequelize = new Sequelize({
 sequelize.options.logging = false //Set loggin output to false
 
 //TODO: Import all the models as below
+const ChapterMemberModel = require("../models/ChapterMemberModel")
+const ChapterModel = require("../models/ChapterModel")
+const EventModel = require("../models/EventModel")
+const EventTypeModel = require("../models/EventTypeModel")
+const GalleryModel = require("../models/GalleryModel")
 const MemberModel = require("../models/MemberModel")
+const RoleModel = require("../models/RoleModel")
 
 //TODO: Create the actual models as below
+const ChapterMember = ChapterMemberModel(sequelize)
+const Chapter = ChapterModel(sequelize)
+const Event = EventModel(sequelize)
+const EventType = EventTypeModel(sequelize)
+const Gallery = GalleryModel(sequelize)
 const Member = MemberModel(sequelize)
+const Role = RoleModel(sequelize)
 
 //TODO; Create the relationships as below, use the sequelize documentation as guide
 //User.hasMany(AnotherModel)
 //AnotherModel.belongsTo(User)
+Event.hasMany(Galley);
+Gallery.belongsTo(Event);
+EventType.hasMany(Event);
+Event.belongsTo(EventType);
+Chapter.hasMany(Event);
+Event.belongsTo(Chapter);
+Chapter.hasMany(ChapterMember);
+ChapterMember.belongsTo(Chapter);
+Member.hasMany(ChapterMember);
+ChapterMember.belongsTo(Member);
+Role.hasMany(ChapterMember);
+ChapterMember.belongsTo(Role);
 
 var resetDb = { force:false };
 sequelize.sync( resetDb ).then( async () => {
