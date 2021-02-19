@@ -44,7 +44,7 @@ const Role = RoleModel(sequelize)
 //TODO; Create the relationships as below, use the sequelize documentation as guide
 //User.hasMany(AnotherModel)
 //AnotherModel.belongsTo(User)
-Event.hasMany(Galley);
+Event.hasMany(Gallery);
 Gallery.belongsTo(Event);
 EventType.hasMany(Event);
 Event.belongsTo(EventType);
