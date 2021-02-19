@@ -66,5 +66,11 @@ sequelize.sync( resetDb ).then( async () => {
 
 module.exports = {
     sequelize,
-    Member
+    Member,
+    Chapter,
+    ChapterMember,
+    Event,
+    EventType,
+    Gallery,
+    Role
 }
