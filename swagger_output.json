@@ -118,6 +118,105 @@
           }
         }
       }
+    },
+    "/galleries/{gallery_id}": {
+      "get": {
+        "tags": [
+          "Galleries"
+        ],
+        "description": "Endpoint to get one gallery",
+        "parameters": [
+          {
+            "name": "gallery_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/galleries": {
+      "get": {
+        "tags": [
+          "Galleries"
+        ],
+        "description": "Endpoint to get all galleries",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Galleries"
+        ],
+        "description": "Endpoint to create a gallery",
+        "parameters": [
+          {
+            "name": "body",
+            "description": "description",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Gallery"
+            },
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Galleries"
+        ],
+        "description": "Endpoint to update a gallery",
+        "parameters": [
+          {
+            "name": "body",
+            "description": "description",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Gallery"
+            },
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -145,6 +244,27 @@
           "example": ""
         },
         "phone": {
+          "type": "string",
+          "example": ""
+        }
+      }
+    },
+    "Gallery": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": ""
+        },
+        "path": {
+          "type": "string",
+          "example": ""
+        },
+        "descrption": {
+          "type": "string",
+          "example": ""
+        },
+        "event_id": {
           "type": "string",
           "example": ""
         }

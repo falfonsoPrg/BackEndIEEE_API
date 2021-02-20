@@ -31,7 +31,11 @@ require("./database/sequelize")
 
 //Import Routes
 const MemberRoutes = require("./routes/MemberRoutes")
-
+const ChapterRoutes = require("./routes/ChapterRoutes")
+const EventRoutes = require("./routes/EventRoutes")
+const EventTypeRoutes = require("./routes/EventTypeRoutes")
+const GalleryRoutes = require("./routes/GalleryRoutes")
+const RoleRoutes = require("./routes/RoleRoutes")
 
 //Middleware
 app.use(express.urlencoded({ extended: false }))
@@ -45,7 +49,11 @@ app.get('/',(req,res)=>{
 
 //Declare routes
 app.use("/api/members",MemberRoutes)
-
+app.use("/api/chapters",ChapterRoutes)
+app.use("/api/events",EventRoutes)
+app.use("/api/eventsType",EventTypeRoutes)
+app.use("/api/gallerys",GalleryRoutes)
+app.use("/api/roles",RoleRoutes)
 
 //Initialize the server
 app.listen(port,() => {

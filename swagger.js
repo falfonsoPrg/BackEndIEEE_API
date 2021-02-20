@@ -2,7 +2,7 @@ const swaggerAutogen = require('swagger-autogen')()
 const dotenv = require('dotenv')
 dotenv.config();
 const outputFile = './swagger_output.json'
-const endpointsFiles = ["./routes/MemberRoutes.js"]
+const endpointsFiles = ["./routes/MemberRoutes.js","./routes/GalleryRoutes.js"]
 
 const port = process.env.HOST_FOR_SWAGGER || 'localhost:4000'
 
@@ -25,6 +25,12 @@ const doc = {
             "password":"",
             "document":"",
             "phone":""
+        },
+        Gallery:{
+            "name":"",
+            "path":"",
+            "descrption":"",
+            "event_id":""
         }
     }
 }
