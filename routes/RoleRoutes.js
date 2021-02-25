@@ -5,7 +5,7 @@ const RoleController = require('../controllers/RoleController')
 router.get('/:role_id', async (req,res)=>{
     /**
         #swagger.tags = ['Roles']
-        #swagger.path = '/roles/{roles_id}'
+        #swagger.path = '/roles/{role_id}'
         #swagger.description = 'Endpoint to get one role'
      */
     const role_id = req.params.role_id

@@ -20,15 +20,15 @@
     "application/json"
   ],
   "paths": {
-    "/members/{member_id}": {
+    "/chapters/{chapter_id}": {
       "get": {
         "tags": [
-          "Members"
+          "Chapters"
         ],
-        "description": "Endpoint to get one member",
+        "description": "Endpoint to get one chapter",
         "parameters": [
           {
-            "name": "member_id",
+            "name": "chapter_id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -44,12 +44,12 @@
         }
       }
     },
-    "/members": {
+    "/chapters": {
       "get": {
         "tags": [
-          "Members"
+          "Chapters"
         ],
-        "description": "Endpoint to get all members",
+        "description": "Endpoint to get all chapters",
         "parameters": [],
         "responses": {
           "200": {
@@ -62,9 +62,9 @@
       },
       "post": {
         "tags": [
-          "Members"
+          "Chapters"
         ],
-        "description": "Endpoint to create a member",
+        "description": "Endpoint to create a chapter",
         "parameters": [
           {
             "name": "body",
@@ -72,7 +72,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Member"
+              "$ref": "#/definitions/Chapter"
             },
             "type": "string"
           }
@@ -91,9 +91,9 @@
       },
       "put": {
         "tags": [
-          "Members"
+          "Chapters"
         ],
-        "description": "Endpoint to update a member",
+        "description": "Endpoint to update a chapter",
         "parameters": [
           {
             "name": "body",
@@ -101,7 +101,405 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Member"
+              "$ref": "#/definitions/Chapter"
+            },
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
+    },
+    "/chaptersinfo/{chapterinfo_id}": {
+      "get": {
+        "tags": [
+          "ChaptersInfo"
+        ],
+        "description": "Endpoint to get one chapter",
+        "parameters": [
+          {
+            "name": "chapterinfo_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/chaptersinfo": {
+      "get": {
+        "tags": [
+          "ChaptersInfo"
+        ],
+        "description": "Endpoint to get all chaptersinfo",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ChaptersInfo"
+        ],
+        "description": "Endpoint to create a chapterinfo",
+        "parameters": [
+          {
+            "name": "body",
+            "description": "description",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChapterInfo"
+            },
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
+    },
+    "/chapterinfo": {
+      "put": {
+        "tags": [
+          "ChaptersInfo"
+        ],
+        "description": "Endpoint to update a chapterinfo",
+        "parameters": [
+          {
+            "name": "body",
+            "description": "description",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChapterInfo"
+            },
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
+    },
+    "/chaptersmembers/{chaptermember_id}": {
+      "get": {
+        "tags": [
+          "ChaptersMembers"
+        ],
+        "description": "Endpoint to get one chaptermember",
+        "parameters": [
+          {
+            "name": "chaptermember_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/chaptersmembers": {
+      "get": {
+        "tags": [
+          "ChaptersMembers"
+        ],
+        "description": "Endpoint to get all chaptersmembers",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ChaptersMembers"
+        ],
+        "description": "Endpoint to create a chaptermember",
+        "parameters": [
+          {
+            "name": "body",
+            "description": "description",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChapterMember"
+            },
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ChaptersMembers"
+        ],
+        "description": "Endpoint to update a chaptermember",
+        "parameters": [
+          {
+            "name": "body",
+            "description": "description",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChapterMember"
+            },
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
+    },
+    "/events/{event_id}": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "description": "Endpoint to get one event",
+        "parameters": [
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/events": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "description": "Endpoint to get all events",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Events"
+        ],
+        "description": "Endpoint to create a event",
+        "parameters": [
+          {
+            "name": "body",
+            "description": "description",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Event"
+            },
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Events"
+        ],
+        "description": "Endpoint to update a event",
+        "parameters": [
+          {
+            "name": "body",
+            "description": "description",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Event"
+            },
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
+    },
+    "/eventtypes/{eventtype_id}": {
+      "get": {
+        "tags": [
+          "EventTypes"
+        ],
+        "description": "Endpoint to get one eventtype",
+        "parameters": [
+          {
+            "name": "eventtype_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/eventtypes": {
+      "get": {
+        "tags": [
+          "EventTypes"
+        ],
+        "description": "Endpoint to get all eventtypes",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "EventTypes"
+        ],
+        "description": "Endpoint to create a eventtype",
+        "parameters": [
+          {
+            "name": "body",
+            "description": "description",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EventType"
+            },
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "EventTypes"
+        ],
+        "description": "Endpoint to update a eventtype",
+        "parameters": [
+          {
+            "name": "body",
+            "description": "description",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EventType"
             },
             "type": "string"
           }
@@ -217,9 +615,333 @@
           }
         }
       }
+    },
+    "/members/{member_id}": {
+      "get": {
+        "tags": [
+          "Members"
+        ],
+        "description": "Endpoint to get one member",
+        "parameters": [
+          {
+            "name": "member_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/members": {
+      "get": {
+        "tags": [
+          "Members"
+        ],
+        "description": "Endpoint to get all members",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Members"
+        ],
+        "description": "Endpoint to create a member",
+        "parameters": [
+          {
+            "name": "body",
+            "description": "description",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Member"
+            },
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Members"
+        ],
+        "description": "Endpoint to update a member",
+        "parameters": [
+          {
+            "name": "body",
+            "description": "description",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Member"
+            },
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
+    },
+    "/roles/{role_id}": {
+      "get": {
+        "tags": [
+          "Roles"
+        ],
+        "description": "Endpoint to get one role",
+        "parameters": [
+          {
+            "name": "role_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/roles": {
+      "get": {
+        "tags": [
+          "Roles"
+        ],
+        "description": "Endpoint to get all roles",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Roles"
+        ],
+        "description": "Endpoint to create a role",
+        "parameters": [
+          {
+            "name": "body",
+            "description": "description",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Role"
+            },
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Roles"
+        ],
+        "description": "Endpoint to update a role",
+        "parameters": [
+          {
+            "name": "body",
+            "description": "description",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Role"
+            },
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
     }
   },
   "definitions": {
+    "Chapter": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": ""
+        },
+        "description": {
+          "type": "string",
+          "example": ""
+        },
+        "logo_path": {
+          "type": "string",
+          "example": ""
+        },
+        "start_date": {
+          "type": "string",
+          "example": ""
+        },
+        "end_date": {
+          "type": "string",
+          "example": ""
+        },
+        "isActive": {
+          "type": "string",
+          "example": ""
+        }
+      }
+    },
+    "ChapterInfo": {
+      "type": "object",
+      "properties": {
+        "mission": {
+          "type": "string",
+          "example": ""
+        },
+        "vission": {
+          "type": "string",
+          "example": ""
+        },
+        "objectives": {
+          "type": "string",
+          "example": ""
+        },
+        "chapter_id": {
+          "type": "string",
+          "example": ""
+        }
+      }
+    },
+    "ChapterMember": {
+      "type": "object",
+      "properties": {
+        "isActive": {
+          "type": "string",
+          "example": ""
+        },
+        "start_date": {
+          "type": "string",
+          "example": ""
+        },
+        "end_date": {
+          "type": "string",
+          "example": ""
+        }
+      }
+    },
+    "Event": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "example": ""
+        },
+        "description": {
+          "type": "string",
+          "example": ""
+        },
+        "start_date": {
+          "type": "string",
+          "example": ""
+        },
+        "end_date": {
+          "type": "string",
+          "example": ""
+        },
+        "event_type_id": {
+          "type": "string",
+          "example": ""
+        },
+        "chapter_id": {
+          "type": "string",
+          "example": ""
+        }
+      }
+    },
+    "EventType": {
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "type": "string",
+          "example": ""
+        }
+      }
+    },
+    "Gallery": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": ""
+        },
+        "path": {
+          "type": "string",
+          "example": ""
+        },
+        "description": {
+          "type": "string",
+          "example": ""
+        },
+        "event_id": {
+          "type": "string",
+          "example": ""
+        }
+      }
+    },
     "Member": {
       "type": "object",
       "properties": {
@@ -246,25 +968,33 @@
         "phone": {
           "type": "string",
           "example": ""
+        },
+        "image_path": {
+          "type": "string",
+          "example": ""
         }
       }
     },
-    "Gallery": {
+    "Role": {
       "type": "object",
       "properties": {
         "name": {
           "type": "string",
           "example": ""
         },
-        "path": {
+        "description": {
           "type": "string",
           "example": ""
         },
-        "descrption": {
+        "canCreate": {
           "type": "string",
           "example": ""
         },
-        "event_id": {
+        "canDelete": {
+          "type": "string",
+          "example": ""
+        },
+        "canUpdate": {
           "type": "string",
           "example": ""
         }

@@ -5,7 +5,7 @@ const ChapterController = require('../controllers/ChapterController')
 router.get('/:chapter_id', async (req,res)=>{
     /**
         #swagger.tags = ['Chapters']
-        #swagger.path = '/chapters/{chapters_id}'
+        #swagger.path = '/chapters/{chapter_id}'
         #swagger.description = 'Endpoint to get one chapter'
      */
     const chapter_id = req.params.chapter_id

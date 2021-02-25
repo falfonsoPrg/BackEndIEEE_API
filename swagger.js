@@ -1,8 +1,9 @@
 const swaggerAutogen = require('swagger-autogen')()
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
+const { Member, ChapterMember } = require('./database/sequelize.js');
 dotenv.config();
 const outputFile = './swagger_output.json'
-const endpointsFiles = ["./routes/MemberRoutes.js","./routes/GalleryRoutes.js"]
+const endpointsFiles = ["./routes/ChapterRoutes.js","./routes/ChapterInfoRoutes.js","./routes/ChapterMemberRoutes.js","./routes/EventRoutes.js","./routes/EventTypeRoutes.js","./routes/GalleryRoutes.js","./routes/MemberRoutes.js","./routes/RoleRoutes.js"]
 
 const port = process.env.HOST_FOR_SWAGGER || 'localhost:4000'
 
@@ -18,20 +19,61 @@ const doc = {
     consumes: ['application/json','multipart/form-data'],
     produces: ['application/json'],
     definitions: {
+        Chapter:{
+            "name":"",
+            "description":"",
+            "logo_path":"",
+            "start_date":"",
+            "end_date":"",
+            "isActive":""
+        },
+        ChapterInfo:{
+            "mission":"",
+            "vission":"",
+            "objectives":"",
+            "chapter_id":"",
+        },
+        ChapterMember:{
+            "isActive":"",
+            "start_date":"",
+            "end_date":""
+        },
+        
+        Event:{
+           "title":"",
+           "description":"",
+           "start_date":"",
+           "end_date":"",
+           "event_type_id":"",
+           "chapter_id":"",
+        },
+        EventType:{
+            "event_type":""
+        },
+        Gallery:{
+            "name":"",
+            "path":"",
+            "description":"",
+            "event_id":"",
+
+        },
         Member:{
             "firstname":"",
             "lastname":"",
             "email":"email@email.com",
             "password":"",
             "document":"",
-            "phone":""
+            "phone":"",
+            "image_path":""
         },
-        Gallery:{
+        Role:{
             "name":"",
-            "path":"",
-            "descrption":"",
-            "event_id":""
-        }
+            "description":"",
+            "canCreate":"",
+            "canDelete":"",
+            "canUpdate":"",
+        }     
+       
     }
 }
 
