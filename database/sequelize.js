@@ -31,6 +31,7 @@ const EventTypeModel = require("../models/EventTypeModel")
 const GalleryModel = require("../models/GalleryModel")
 const MemberModel = require("../models/MemberModel")
 const RoleModel = require("../models/RoleModel")
+const ChapterInfoModel = require("../models/ChapterInfoModel")
 
 //TODO: Create the actual models as below
 const ChapterMember = ChapterMemberModel(sequelize)
@@ -40,6 +41,7 @@ const EventType = EventTypeModel(sequelize)
 const Gallery = GalleryModel(sequelize)
 const Member = MemberModel(sequelize)
 const Role = RoleModel(sequelize)
+const ChapterInfo = ChapterInfoModel(sequelize)
 
 //TODO; Create the relationships as below, use the sequelize documentation as guide
 //User.hasMany(AnotherModel)
@@ -56,6 +58,8 @@ Member.hasMany(ChapterMember);
 ChapterMember.belongsTo(Member);
 Role.hasMany(ChapterMember);
 ChapterMember.belongsTo(Role);
+Chapter.hasMany(ChapterInfo);
+ChapterInfo.belongsTo(Chapter);
 
 var resetDb = { force:false };
 sequelize.sync( resetDb ).then( async () => {
@@ -69,6 +73,7 @@ module.exports = {
     Member,
     Chapter,
     ChapterMember,
+    ChapterInfo,
     Event,
     EventType,
     Gallery,
