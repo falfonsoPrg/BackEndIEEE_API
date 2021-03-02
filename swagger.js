@@ -1,6 +1,5 @@
 const swaggerAutogen = require('swagger-autogen')()
 const dotenv = require('dotenv');
-const { Member, ChapterMember } = require('./database/sequelize.js');
 dotenv.config();
 const outputFile = './swagger_output.json'
 const endpointsFiles = ["./routes/ChapterRoutes.js","./routes/ChapterInfoRoutes.js","./routes/ChapterMemberRoutes.js","./routes/EventRoutes.js","./routes/EventTypeRoutes.js","./routes/GalleryRoutes.js","./routes/MemberRoutes.js","./routes/RoleRoutes.js"]

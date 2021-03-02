@@ -37,6 +37,7 @@ const EventTypeRoutes = require("./routes/EventTypeRoutes")
 const GalleryRoutes = require("./routes/GalleryRoutes")
 const MemberRoutes = require("./routes/MemberRoutes")
 const RoleRoutes = require("./routes/RoleRoutes")
+const ChapterMemberRoutes = require("./routes/ChapterMemberRoutes")
 
 //Middleware
 app.use(express.urlencoded({ extended: false }))
@@ -56,6 +57,7 @@ app.use("/api/eventtypes",EventTypeRoutes)
 app.use("/api/galleries",GalleryRoutes)
 app.use("/api/members",MemberRoutes)
 app.use("/api/roles",RoleRoutes)
+app.use("/api/chaptersmembers",ChapterMemberRoutes)
 
 //Initialize the server
 app.listen(port,() => {

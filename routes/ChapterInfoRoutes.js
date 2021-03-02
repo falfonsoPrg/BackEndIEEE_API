@@ -9,7 +9,7 @@ router.get('/:chapter_id', async (req,res)=>{
         #swagger.description = 'Endpoint to get one chapter'
      */
     const chapterinfo_id = req.params.chapterinfo_id
-    const chapterinfo = await ChapterController.getChapterInfo(chapterinfo_id)
+    const chapterinfo = await ChapterInfoController.getChapterInfo(chapterinfo_id)
     if(chapterinfo){
         return res.status(200).send({
             response: chapterinfo
@@ -26,7 +26,7 @@ router.get('/', async (req,res)=>{
         #swagger.path = '/chaptersinfo'
         #swagger.description = 'Endpoint to get all chaptersinfo'
      */
-    const chaptersinfo = await ChapterController.getChaptersInfo()
+    const chaptersinfo = await ChapterInfoController.getChaptersInfo()
     if(chaptersinfo.length > 0){
         return res.status(200).send({
             response: chaptersinfo
@@ -56,7 +56,7 @@ router.post('/', async (req,res)=>{
     if(error) return res.status(422).send({
         error: error.details[0].message
     })
-    const chapter = await ChapterController.createChapterInfo(req.body)
+    const chapter = await ChapterInfoController.createChapterInfo(req.body)
     if(chapter.errors || chapter.name){
         return res.status(400).send({
             error: "Couldn't save the chapterinfo"

@@ -26,7 +26,7 @@ router.get('/', async (req,res)=>{
         #swagger.path = '/chaptersmembers'
         #swagger.description = 'Endpoint to get all chaptersmembers'
      */
-    const chaptersmembers = await ChapterMemberController.getChaptersMembers()
+    const chaptersmembers = await ChapterMemberController.getChapterMembers()
     if(chaptersmembers.length > 0){
         return res.status(200).send({
             response: chaptersmembers

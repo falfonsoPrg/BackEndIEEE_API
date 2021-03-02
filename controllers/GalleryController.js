@@ -8,7 +8,7 @@ GalleryController.getGallery = async (gallery_id) => {
         return error
     }
 }
-GalleryController.getGallerys = async () => {
+GalleryController.getGalleries = async () => {
     try {
         return await Gallery.findAll()
     } catch (error) {
