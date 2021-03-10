@@ -1,6 +1,8 @@
 const express = require('express')
 const dotenv = require('dotenv')
 const cors = require('cors');
+const multer  = require('multer');
+const upload = multer({ dest: 'uploads/' });
 const app = express()
 const port = process.env.PORT || 4000
 dotenv.config();
@@ -46,7 +48,10 @@ app.use(express.static('public'));
 
 //Fisrt route
 app.get('/',(req,res)=>{
-    res.send("This project is the rest API of the student branch of University El Bosque <a href='/swagger'>Swagger</a>")
+    res.send("This project is the rest API of the student branch of University El Bosque <a href='/swagger'>Swagger</a>"+
+    "<form action='/profile' method='post' enctype='multipart/form-data'>"+
+    "<input type='file' name='avatar'>"+
+    "<input type='submit' value='Enviar'></form>")
 })
 
 //Declare routes
@@ -62,4 +67,10 @@ app.use("/api/chaptersmembers",ChapterMemberRoutes)
 //Initialize the server
 app.listen(port,() => {
     console.log('Server on port ' + port)
-}) 
+})
+
+app.post('/profile', upload.single('avatar'), (req, res) => {
+  res.send()
+  // req.file es el archivo 'avatar', el nombre original se puede obtener
+  // con req.file.originalname
+});
