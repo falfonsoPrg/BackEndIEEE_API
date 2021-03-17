@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const RoleController = require('../controllers/RoleController')
-//const {  } = require('../middlewares/Validation')
+const { CreateRoleValidation,UpdateRoleValidation } = require('../middlewares/Validation')
 
 router.get('/:role_id', async (req,res)=>{
     /**
@@ -52,7 +52,7 @@ router.post('/', async (req,res)=>{
             }
         }]
      */
-    const {error} = false //CreateRoleValidation(req.body)
+    const {error} = CreateRoleValidation(req.body)
     if(error) return res.status(422).send({
         error: error.details[0].message
     })
@@ -81,7 +81,7 @@ router.put('/', async (req,res)=>{
             }
         }]
      */
-    const {error} = false //UpdateRoleValidation(req.body)
+    const {error} = UpdateRoleValidation(req.body)
     if(error) return res.status(422).send({
         error: error.details[0].message
     })

@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const EventController = require('../controllers/EventController')
-//const {  } = require('../middlewares/Validation')
+const { CreateEventValidation,UpdateEventValidation } = require('../middlewares/Validation')
 
 router.get('/:event_id', async (req,res)=>{
     /**
@@ -52,7 +52,7 @@ router.post('/', async (req,res)=>{
             }
         }]
      */
-    const {error} = false //CreateEventValidation(req.body)
+    const {error} = CreateEventValidation(req.body)
     if(error) return res.status(422).send({
         error: error.details[0].message
     })
@@ -82,7 +82,7 @@ router.put('/', async (req,res)=>{
             }
         }]
      */
-    const {error} = false //UpdateEventValidation(req.body)
+    const {error} = UpdateEventValidation(req.body)
     if(error) return res.status(422).send({
         error: error.details[0].message
     })

@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const GalleryController = require('../controllers/GalleryController')
-//const {  } = require('../middlewares/Validation')
+const {  CreateGalleryValidation, UpdateGalleryValidation} = require('../middlewares/Validation')
 
 router.get('/:gallery_id', async (req,res)=>{
     /**
@@ -52,7 +52,7 @@ router.post('/', async (req,res)=>{
             }
         }]
      */
-    const {error} = false //CreateGalleryValidation(req.body)
+    const {error} = CreateGalleryValidation(req.body)
     if(error) return res.status(422).send({
         error: error.details[0].message
     })
@@ -81,7 +81,7 @@ router.put('/', async (req,res)=>{
             }
         }]
      */
-    const {error} = false //UpdateGalleryValidation(req.body)
+    const {error} = UpdateGalleryValidation(req.body)
     if(error) return res.status(422).send({
         error: error.details[0].message
     })
