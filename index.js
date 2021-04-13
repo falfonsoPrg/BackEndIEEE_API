@@ -33,6 +33,7 @@ require("./database/sequelize")
 
 //Import Routes
 const ChapterInfoRoutes = require("./routes/ChapterInfoRoutes")
+const AuthorizationRoutes = require("./routes/AuthorizationRoutes")
 const ChapterRoutes = require("./routes/ChapterRoutes")
 const EventRoutes = require("./routes/EventRoutes")
 const EventTypeRoutes = require("./routes/EventTypeRoutes")
@@ -56,6 +57,7 @@ app.get('/',(req,res)=>{
 
 //Declare routes
 app.use("/api/chapters",ChapterRoutes)
+app.use("/api/auth",AuthorizationRoutes)
 app.use("/api/chaptersinfo",ChapterInfoRoutes)
 app.use("/api/events",EventRoutes)
 app.use("/api/eventtypes",EventTypeRoutes)
