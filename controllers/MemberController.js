@@ -8,6 +8,13 @@ MemberController.getMember = async (member_id) => {
         return error
     }
 }
+MemberController.getMemberByEmail = async (pEmail) => {
+    try {
+        return await Member.findOne({where:{email: pEmail}})
+    } catch (error) {
+        return error
+    }
+}
 MemberController.getMembers = async () => {
     try {
         return await Member.findAll()

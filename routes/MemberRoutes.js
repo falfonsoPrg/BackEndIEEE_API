@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const MemberController = require('../controllers/MemberController')
+const bcrypt = require('bcryptjs')
 const { CreateMemberValidation, UpdateMemberValidation} = require('../middlewares/Validation')
 
 router.get('/:member_id', async (req,res)=>{
@@ -56,7 +57,9 @@ router.post('/', async (req,res)=>{
     if(error) return res.status(422).send({
         error: error.details[0].message
     })
-
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(req.body.password, salt)
+    req.body.password = hashedPassword
     const member = await MemberController.createMember(req.body)
     if(member.errors || member.name){
         return res.status(400).send({
