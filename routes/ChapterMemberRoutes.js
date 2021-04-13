@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const ChapterMemberController = require('../controllers/ChapterMemberController')
-//const {  } = require('../middlewares/Validation')
+const {CreateChapterMemberValidation,UpdateChapterMemberValidation  } = require('../middlewares/Validation')
 
 router.get('/:chaptermember_id', async (req,res)=>{
     /**
@@ -52,7 +52,7 @@ router.post('/', async (req,res)=>{
             }
         }]
      */
-    const {error} = false //CreateChapterMemberValidation(req.body)
+    const {error} = CreateChapterMemberValidation(req.body)
     if(error) return res.status(422).send({
         error: error.details[0].message
     })
@@ -81,7 +81,7 @@ router.put('/', async (req,res)=>{
             }
         }]
      */
-    const {error} = false //UpdateChapterMemberValidation(req.body)
+    const {error} = UpdateChapterMemberValidation(req.body)
     if(error) return res.status(422).send({
         error: error.details[0].message
     })

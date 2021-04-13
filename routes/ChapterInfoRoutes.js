@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const ChapterInfoController = require('../controllers/ChapterInfoController')
-//const {  } = require('../middlewares/Validation')
+const { CreateChapterInfoValidation, UpdateChapterInfoValidation } = require('../middlewares/Validation')
 
 router.get('/:chapter_id', async (req,res)=>{
     /**
@@ -52,7 +52,7 @@ router.post('/', async (req,res)=>{
             }
         }]
      */
-    const {error} = false //CreateChapterInfoValidation(req.body)
+    const {error} = CreateChapterInfoValidation(req.body)
     if(error) return res.status(422).send({
         error: error.details[0].message
     })
@@ -81,7 +81,7 @@ router.put('/', async (req,res)=>{
             }
         }]
      */
-    const {error} = false //UpdateChapterInfoValidation(req.body)
+    const {error} = UpdateChapterInfoValidation(req.body)
     if(error) return res.status(422).send({
         error: error.details[0].message
     })

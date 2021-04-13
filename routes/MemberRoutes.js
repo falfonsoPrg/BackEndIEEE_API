@@ -1,8 +1,7 @@
 const router = require('express').Router()
 const MemberController = require('../controllers/MemberController')
 const bcrypt = require('bcryptjs')
-
-//const {  } = require('../middlewares/Validation')
+const { CreateMemberValidation, UpdateMemberValidation} = require('../middlewares/Validation')
 
 router.get('/:member_id', async (req,res)=>{
     /**
@@ -54,7 +53,7 @@ router.post('/', async (req,res)=>{
             }
         }]
      */
-    const {error} = false //CreateMemberValidation(req.body)
+    const {error} = CreateMemberValidation(req.body)
     if(error) return res.status(422).send({
         error: error.details[0].message
     })
@@ -86,7 +85,7 @@ router.put('/', async (req,res)=>{
             }
         }]
      */
-    const {error} = false //UpdateMemberValidation(req.body)
+    const {error} = UpdateMemberValidation(req.body)
     if(error) return res.status(422).send({
         error: error.details[0].message
     })
