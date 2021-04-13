@@ -21,15 +21,15 @@ module.exports = (sequelize)  => {
             allowNull: false
         },
         start_date: {
-            type: DataTypes.STRING,
+            type: DataTypes.DATE,
             allowNull: true
         },
         end_date: {
-            type: DataTypes.STRING,
+            type: DataTypes.DATE,
             allowNull: true
         },
         isActive:{
-            type: DataTypes.STRING,
+            type: DataTypes.BOOLEAN,
             allowNull: false
         }
     })
