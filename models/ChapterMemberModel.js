@@ -5,6 +5,7 @@ module.exports = (sequelize)  => {
         member_id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
+            autoIncrement: true,
             allowNull: false
         },
         role_id: {

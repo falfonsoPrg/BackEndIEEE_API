@@ -5,6 +5,7 @@ module.exports = (sequelize)  => {
         chapter_id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
+            autoIncrement: true,
             allowNull: false
         },
         name: {
@@ -20,15 +21,15 @@ module.exports = (sequelize)  => {
             allowNull: false
         },
         start_date: {
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
             allowNull: true
         },
         end_date: {
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
             allowNull: true
         },
         isActive:{
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.STRING,
             allowNull: false
         }
     })
