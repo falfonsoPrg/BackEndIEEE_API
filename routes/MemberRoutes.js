@@ -1,6 +1,8 @@
 const router = require('express').Router()
 const MemberController = require('../controllers/MemberController')
 const bcrypt = require('bcryptjs')
+const multer  = require('multer');
+const upload = multer({ dest: 'uploads/' });
 const { CreateMemberValidation, UpdateMemberValidation} = require('../middlewares/Validation')
 
 router.get('/:member_id', async (req,res)=>{
@@ -38,7 +40,7 @@ router.get('/', async (req,res)=>{
     })
 })
 
-router.post('/', async (req,res)=>{
+router.post('/', upload.single('avatar'), async (req,res)=>{
     /**
         #swagger.tags = ['Members']
         #swagger.path = '/members'
@@ -98,6 +100,5 @@ router.put('/', async (req,res)=>{
     }
     return res.status(204).send()
 })
-
 
 module.exports = router;

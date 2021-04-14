@@ -1,6 +1,8 @@
 const router = require('express').Router()
 const ChapterController = require('../controllers/ChapterController')
 const {CreateChapterValidation,UpdateChapterValidation  } = require('../middlewares/Validation')
+const multer  = require('multer');
+const upload = multer({ dest: 'uploads/' });
 
 router.get('/:chapter_id', async (req,res)=>{
     /**
@@ -37,7 +39,7 @@ router.get('/', async (req,res)=>{
     })
 })
 
-router.post('/', async (req,res)=>{
+router.post('/', upload.single('avatar'), async (req,res)=>{
     /**
         #swagger.tags = ['Chapters']
         #swagger.path = '/chapters'
@@ -94,6 +96,5 @@ router.put('/', async (req,res)=>{
     }
     return res.status(204).send()
 })
-
 
 module.exports = router;
