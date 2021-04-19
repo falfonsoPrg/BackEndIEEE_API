@@ -33,6 +33,7 @@ require("./database/sequelize")
 
 //Import Routes
 const ChapterInfoRoutes = require("./routes/ChapterInfoRoutes")
+const AuthorizationRoutes = require("./routes/AuthorizationRoutes")
 const ChapterRoutes = require("./routes/ChapterRoutes")
 const EventRoutes = require("./routes/EventRoutes")
 const EventTypeRoutes = require("./routes/EventTypeRoutes")
@@ -48,14 +49,16 @@ app.use(express.static('public'));
 
 //Fisrt route
 app.get('/',(req,res)=>{
-    res.send("This project is the rest API of the student branch of University El Bosque <a href='/swagger'>Swagger</a>"+
-    "<form action='/profile' method='post' enctype='multipart/form-data'>"+
-    "<input type='file' name='avatar'>"+
-    "<input type='submit' value='Enviar'></form>")
+    res.send("This project is the rest API of the student branch of University El Bosque <a href='/swagger'>Swagger</a>")
 })
+
+//"<form action='/profile' method='post' enctype='multipart/form-data'>"+
+//"<input type='file' name='avatar'>"+
+//"<input type='submit' value='Enviar'></form>"
 
 //Declare routes
 app.use("/api/chapters",ChapterRoutes)
+app.use("/api/auth",AuthorizationRoutes)
 app.use("/api/chaptersinfo",ChapterInfoRoutes)
 app.use("/api/events",EventRoutes)
 app.use("/api/eventtypes",EventTypeRoutes)
@@ -68,9 +71,3 @@ app.use("/api/chaptersmembers",ChapterMemberRoutes)
 app.listen(port,() => {
     console.log('Server on port ' + port)
 })
-
-app.post('/profile', upload.single('avatar'), (req, res) => {
-  res.send()
-  // req.file es el archivo 'avatar', el nombre original se puede obtener
-  // con req.file.originalname
-});
