@@ -5,8 +5,8 @@ module.exports.CreateChapterValidation = CreateChapterValidation = (data) => {
         name: Joi.string().required(),
         description: Joi.string().required(),
         logo_path: Joi.string().required(),
-        start_date: Joi.string().date(),
-        end_date: Joi.string().date,
+        start_date: Joi.date().required(),
+        end_date: Joi.date(),
         isActive: Joi.boolean().required(),
     })
     return schema.validate(data)
