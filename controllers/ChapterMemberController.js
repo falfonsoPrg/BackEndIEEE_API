@@ -1,9 +1,9 @@
 const { ChapterMember } = require('../database/sequelize')
 
 ChapterMemberController = {}
-ChapterMemberController.getChapterMember = async (chapter_id) => {
+ChapterMemberController.getChapterMember = async (member_id) => {
     try {
-        return await ChapterMember.findByPk(chapter_id)
+        return await ChapterMember.findByPk(member_id)
     } catch (error) {
         return error
     }

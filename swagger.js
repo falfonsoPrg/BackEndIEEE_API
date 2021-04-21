@@ -33,6 +33,8 @@ const doc = {
             "chapter_id":"",
         },
         ChapterMember:{
+            "role_id":"",
+            "chapter_id":"",
             "isActive":"",
             "start_date":"",
             "end_date":""

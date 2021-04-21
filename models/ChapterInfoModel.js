@@ -8,7 +8,7 @@ module.exports = (sequelize)  => {
             autoIncrement: true,
             allowNull: false
         },
-        mision: {
+        mission: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -16,7 +16,7 @@ module.exports = (sequelize)  => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        objetives: {
+        objectives: {
             type: DataTypes.STRING,
             allowNull: false
         },

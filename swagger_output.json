@@ -869,6 +869,14 @@
     "ChapterMember": {
       "type": "object",
       "properties": {
+        "role_id": {
+          "type": "string",
+          "example": ""
+        },
+        "chapter_id": {
+          "type": "string",
+          "example": ""
+        },
         "isActive": {
           "type": "string",
           "example": ""

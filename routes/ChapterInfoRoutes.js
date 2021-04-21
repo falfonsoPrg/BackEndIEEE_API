@@ -59,6 +59,7 @@ router.post('/', async (req,res)=>{
     const chapter = await ChapterInfoController.createChapterInfo(req.body)
     if(chapter.errors || chapter.name){
         return res.status(400).send({
+            chapter,
             error: "Couldn't save the chapterinfo"
         })
     }
