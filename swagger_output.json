@@ -861,8 +861,8 @@
           "example": ""
         },
         "chapter_id": {
-          "type": "string",
-          "example": ""
+          "type": "number",
+          "example": 0
         }
       }
     },
@@ -870,12 +870,12 @@
       "type": "object",
       "properties": {
         "role_id": {
-          "type": "string",
-          "example": ""
+          "type": "number",
+          "example": 0
         },
         "chapter_id": {
-          "type": "string",
-          "example": ""
+          "type": "number",
+          "example": 0
         },
         "isActive": {
           "type": "string",
@@ -915,8 +915,8 @@
           "example": ""
         },
         "chapter_id": {
-          "type": "string",
-          "example": ""
+          "type": "number",
+          "example": 0
         }
       }
     },
@@ -945,8 +945,8 @@
           "example": ""
         },
         "event_id": {
-          "type": "string",
-          "example": ""
+          "type": "number",
+          "example": 0
         }
       }
     },

@@ -30,11 +30,11 @@ const doc = {
             "mission":"",
             "vission":"",
             "objectives":"",
-            "chapter_id":"",
+            "chapter_id":0,
         },
         ChapterMember:{
-            "role_id":"",
-            "chapter_id":"",
+            "role_id":0,
+            "chapter_id":0,
             "isActive":"",
             "start_date":"",
             "end_date":""
@@ -46,7 +46,7 @@ const doc = {
            "start_date":"",
            "end_date":"",
            "event_type_id":"",
-           "chapter_id":"",
+           "chapter_id":0,
         },
         EventType:{
             "event_type":""
@@ -55,8 +55,7 @@ const doc = {
             "name":"",
             "path":"",
             "description":"",
-            "event_id":"",
-
+            "event_id":0,
         },
         Member:{
             "firstname":"",
