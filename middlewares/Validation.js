@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 module.exports.CreateChapterValidation = CreateChapterValidation = (data) => {
     const schema = Joi.object({
-        name: Joi.string().required(),
+        chapter_name: Joi.string().required(),
         description: Joi.string().required(),
         logo_path: Joi.string().required(),
         start_date: Joi.date().required(),
@@ -14,12 +14,12 @@ module.exports.CreateChapterValidation = CreateChapterValidation = (data) => {
 module.exports.UpdateChapterValidation = UpdateChapterValidation = (data) => {
     const schema = Joi.object({
         chapter_id: Joi.number().required(),
-        name: Joi.string().required(),
-        description: Joi.string().required(),
-        logo_path: Joi.string().required(),
-        start_date: Joi.date().required(),
+        chapter_name: Joi.string(),
+        description: Joi.string(),
+        logo_path: Joi.string(),
+        start_date: Joi.date(),
         end_date: Joi.date(),
-        isActive: Joi.boolean().required(),
+        isActive: Joi.boolean(),
     })
     return schema.validate(data)
 }
@@ -47,6 +47,7 @@ module.exports.CreateChapterMemberValidation = CreateChapteMemberValidation = (d
     const schema = Joi.object({
         role_id: Joi.number().required(),
         chapter_id:Joi.number().required(),
+        member_id:Joi.number().required(),
         isActive: Joi.boolean().required(),
         start_date: Joi.date().required(),
         end_date: Joi.date(),
@@ -58,8 +59,8 @@ module.exports.UpdateChapterMemberValidation = UpdateChapterMemberValidation = (
         member_id: Joi.number().required(),
         role_id: Joi.number().required(),
         chapter_id: Joi.number().required(),
-        isActive: Joi.boolean().required(),
-        start_date: Joi.date().required(),
+        isActive: Joi.boolean(),
+        start_date: Joi.date(),
         end_date: Joi.date(),
     })
     return schema.validate(data)
@@ -103,7 +104,7 @@ module.exports.UpdateEventTypeValidation = UpdateEventTypeValidation = (data) =>
 
 module.exports.CreateGalleryValidation = CreateGalleryValidation = (data) => {
     const schema = Joi.object({
-        name: Joi.string().required(),
+        gallery_name: Joi.string().required(),
         path: Joi.string().required(),
         description: Joi.string().required(),
         event_id: Joi.number().required(),
@@ -113,10 +114,10 @@ module.exports.CreateGalleryValidation = CreateGalleryValidation = (data) => {
 module.exports.UpdateGalleryValidation = UpdateGalleryValidation = (data) => {
     const schema = Joi.object({
         gallery_id: Joi.number().required(),
-        name: Joi.string().required(),
-        path: Joi.string().required(),
-        description: Joi.string().required(),
-        event_id: Joi.number().required(),
+        gallery_name: Joi.string(),
+        path: Joi.string(),
+        description: Joi.string(),
+        event_id: Joi.number(),
     })
     return schema.validate(data)
 }
@@ -136,19 +137,19 @@ module.exports.CreateMemberValidation = CreateMemberValidation = (data) => {
 module.exports.UpdateMemberValidation = UpdateMemberValidation = (data) => {
     const schema = Joi.object({
         member_id: Joi.number().required(),
-        firstname: Joi.string().min(3).max(10).required(),
-        lastname: Joi.string().min(3).max(10).required(),
-        email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['co'] } }).required(),
-        password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
-        document: Joi.number().required(),
-        phone: Joi.number().required(),
-        image_path: Joi.string().required()
+        firstname: Joi.string(),
+        lastname: Joi.string(),
+        email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['co'] } }),
+        password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
+        document: Joi.number(),
+        phone: Joi.number(),
+        image_path: Joi.string()
     })
     return schema.validate(data)
 }
 module.exports.CreateRoleValidation = CreateRoleValidation = (data) => {
     const schema = Joi.object({
-        name: Joi.string().required(),
+        role_name: Joi.string().required(),
         description: Joi.string().required(),
         canCreate: Joi.boolean().required(),
         canDelete: Joi.boolean().required(),
@@ -159,11 +160,11 @@ module.exports.CreateRoleValidation = CreateRoleValidation = (data) => {
 module.exports.UpdateRoleValidation = UpdateRoleValidation = (data) => {
     const schema = Joi.object({
         role_id: Joi.number().required(),
-        name: Joi.string().required(),
-        description: Joi.string().required(),
-        canCreate: Joi.boolean().required(),
-        canDelete: Joi.boolean().required(),
-        canUpdate: Joi.boolean().required(),
+        role_name: Joi.string(),
+        description: Joi.string(),
+        canCreate: Joi.boolean(),
+        canDelete: Joi.boolean(),
+        canUpdate: Joi.boolean(),
     })
     return schema.validate(data)
 }

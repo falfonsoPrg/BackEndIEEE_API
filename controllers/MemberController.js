@@ -3,21 +3,26 @@ const { Member } = require('../database/sequelize')
 MemberController = {}
 MemberController.getMember = async (member_id) => {
     try {
-        return await Member.findByPk(member_id)
+        return await Member.findByPk(member_id,{attributes: {exclude: ['password']}})
     } catch (error) {
         return error
     }
 }
 MemberController.getMemberByEmail = async (pEmail) => {
     try {
-        return await Member.findOne({where:{email: pEmail}})
+        return await Member.findOne({
+            where:{
+                email: pEmail
+            },
+            attributes: {exclude: ['password']}
+        })
     } catch (error) {
         return error
     }
 }
 MemberController.getMembers = async () => {
     try {
-        return await Member.findAll()
+        return await Member.findAll({attributes: {exclude: ['password']}})
     } catch (error) {
         return error
     }

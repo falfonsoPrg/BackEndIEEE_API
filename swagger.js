@@ -19,7 +19,7 @@ const doc = {
     produces: ['application/json'],
     definitions: {
         Chapter:{
-            "name":"",
+            "chapter_name":"",
             "description":"",
             "logo_path":"",
             "start_date":"",
@@ -35,6 +35,7 @@ const doc = {
         ChapterMember:{
             "role_id":0,
             "chapter_id":0,
+            "member_id":0,
             "isActive":"",
             "start_date":"",
             "end_date":""
@@ -45,14 +46,14 @@ const doc = {
            "description":"",
            "start_date":"",
            "end_date":"",
-           "event_type_id":"",
+           "event_type_id":0,
            "chapter_id":0,
         },
         EventType:{
             "event_type":""
         },
         Gallery:{
-            "name":"",
+            "gallery_name":"",
             "path":"",
             "description":"",
             "event_id":0,
@@ -67,7 +68,7 @@ const doc = {
             "image_path":""
         },
         Role:{
-            "name":"",
+            "role_name":"",
             "description":"",
             "canCreate":"",
             "canDelete":"",

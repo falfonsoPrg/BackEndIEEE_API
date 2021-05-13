@@ -46,20 +46,26 @@ const ChapterInfo = ChapterInfoModel(sequelize)
 //TODO; Create the relationships as below, use the sequelize documentation as guide
 //User.hasMany(AnotherModel)
 //AnotherModel.belongsTo(User)
-Event.hasMany(Gallery);
-Gallery.belongsTo(Event);
-EventType.hasMany(Event);
-Event.belongsTo(EventType);
-Chapter.hasMany(Event);
-Event.belongsTo(Chapter);
-Chapter.hasMany(ChapterMember);
-ChapterMember.belongsTo(Chapter);
-Member.hasMany(ChapterMember);
-ChapterMember.belongsTo(Member);
-Role.hasMany(ChapterMember);
-ChapterMember.belongsTo(Role);
-Chapter.hasMany(ChapterInfo);
-ChapterInfo.belongsTo(Chapter);
+Event.hasMany(Gallery, {foreignKey: 'event_id', sourceKey:'event_id'});
+Gallery.belongsTo(Event, {foreignKey: 'event_id', sourceKey:'event_id'});
+
+EventType.hasMany(Event, {foreignKey: 'event_type_id', sourceKey:'event_type_id'});
+Event.belongsTo(EventType, {foreignKey: 'event_type_id', sourceKey:'event_type_id'});
+
+Chapter.hasMany(Event, {foreignKey: 'chapter_id', sourceKey:'chapter_id'});
+Event.belongsTo(Chapter, {foreignKey: 'chapter_id', sourceKey:'chapter_id'});
+
+Chapter.hasMany(ChapterMember, {foreignKey: 'chapter_id', sourceKey:'chapter_id'});
+ChapterMember.belongsTo(Chapter, {foreignKey: 'chapter_id', sourceKey:'chapter_id'});
+
+Member.hasMany(ChapterMember, {foreignKey: 'member_id', sourceKey:'member_id'});
+ChapterMember.belongsTo(Member, {foreignKey: 'member_id', sourceKey:'member_id'});
+
+Role.hasMany(ChapterMember, {foreignKey: 'role_id', sourceKey:'role_id'});
+ChapterMember.belongsTo(Role, {foreignKey: 'role_id', sourceKey:'role_id'});
+
+Chapter.hasMany(ChapterInfo, {foreignKey: 'chapter_id', sourceKey:'chapter_id'});
+ChapterInfo.belongsTo(Chapter, {foreignKey: 'chapter_id', sourceKey:'chapter_id'});
 
 var resetDb = { force:false };
 sequelize.sync( resetDb ).then( async () => {

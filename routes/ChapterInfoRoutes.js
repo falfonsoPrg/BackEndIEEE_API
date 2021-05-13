@@ -2,14 +2,14 @@ const router = require('express').Router()
 const ChapterInfoController = require('../controllers/ChapterInfoController')
 const { CreateChapterInfoValidation, UpdateChapterInfoValidation } = require('../middlewares/Validation')
 
-router.get('/:chapter_id', async (req,res)=>{
+router.get('/:chapter_info_id', async (req,res)=>{
     /**
         #swagger.tags = ['ChaptersInfo']
-        #swagger.path = '/chaptersinfo/{chapterinfo_id}'
+        #swagger.path = '/chaptersinfo/{chapter_info_id}'
         #swagger.description = 'Endpoint to get one chapter'
      */
-    const chapterinfo_id = req.params.chapterinfo_id
-    const chapterinfo = await ChapterInfoController.getChapterInfo(chapterinfo_id)
+    const id = req.params.chapter_info_id
+    const chapterinfo = await ChapterInfoController.getChapterInfo(id)
     if(chapterinfo){
         return res.status(200).send({
             response: chapterinfo
@@ -68,8 +68,8 @@ router.post('/', async (req,res)=>{
 router.put('/', async (req,res)=>{
     /**
         #swagger.tags = ['ChaptersInfo']
-        #swagger.path = '/chapterinfo'
-        #swagger.description = 'Endpoint to update a chapterinfo'
+        #swagger.path = '/chaptersinfo'
+        #swagger.description = 'Endpoint to update a chaptersinfo'
         #swagger.parameters = [{
             description: 'description',
             in:'body',
@@ -86,7 +86,7 @@ router.put('/', async (req,res)=>{
     })
 
     const chapterinfo = await ChapterInfoController.updateChapterInfo(req.body);
-    if(chapter[0] == 0 || chapter.name){
+    if(chapterinfo[0] == 0 || chapterinfo.name){
         return res.status(404).send({
             error: "Couldn't update the ChapterInfo"
         })

@@ -61,7 +61,6 @@ router.post('/', upload.single('avatar'), async (req,res)=>{
     const chapter = await ChapterController.createChapter(req.body)
     if(chapter.errors || chapter.name){
         return res.status(400).send({
-            chapter,
             error: "Couldn't save the chapter"
         })
     }

@@ -8,7 +8,7 @@ module.exports = (sequelize)  => {
             autoIncrement: true,
             allowNull: false
         },
-        name: {
+        chapter_name: {
             type: DataTypes.STRING,
             allowNull: false
         },

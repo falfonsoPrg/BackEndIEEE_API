@@ -88,6 +88,7 @@ router.put('/', async (req,res)=>{
 
     const chaptermember = await ChapterMemberController.updateChapterMember(req.body);
     if(chaptermember[0] == 0 || chaptermember.name){
+        console.log(chaptermember)
         return res.status(404).send({
             error: "Couldn't update the ChapterMember"
         })

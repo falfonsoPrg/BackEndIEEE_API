@@ -3,14 +3,22 @@ const { ChapterMember } = require('../database/sequelize')
 ChapterMemberController = {}
 ChapterMemberController.getChapterMember = async (member_id) => {
     try {
-        return await ChapterMember.findByPk(member_id)
+        return await ChapterMember.findByPk(member_id,{
+            include: {
+                all: true
+            }
+        })
     } catch (error) {
         return error
     }
 }
 ChapterMemberController.getChapterMembers = async () => {
     try {
-        return await ChapterMember.findAll()
+        return await ChapterMember.findAll({
+            include: {
+                all: true
+            }
+        })
     } catch (error) {
         return error
     }
@@ -27,7 +35,9 @@ ChapterMemberController.updateChapterMember = async (pChapterMember) => {
     try {
         return await ChapterMember.update(pChapterMember,{
             where: {
-                chapter_member_id: pChapterMember.chapter_member_id
+                member_id: pChapterMember.member_id,
+                chapter_id: pChapterMember.chapter_id,
+                role_id: pChapterMember.role_id,
             }
         })
     } catch (error) {

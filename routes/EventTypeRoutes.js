@@ -2,14 +2,14 @@ const router = require('express').Router()
 const EventTypeController = require('../controllers/EventTypeController')
 const { CreateEventTypeValidation,UpdateEventTypeValidation } = require('../middlewares/Validation')
 
-router.get('/:eventtype_id', async (req,res)=>{
+router.get('/:event_type_id', async (req,res)=>{
     /**
         #swagger.tags = ['EventTypes']
-        #swagger.path = '/eventtypes/{eventtype_id}'
+        #swagger.path = '/eventtypes/{event_type_id}'
         #swagger.description = 'Endpoint to get one eventtype'
      */
-    const eventtype_id = req.params.eventtype_id
-    const eventtype = await EventTypeController.getEventType(eventtype_id)
+    const event_type_id = req.params.event_type_id
+    const eventtype = await EventTypeController.getEventType(event_type_id)
     if(eventtype){
         return res.status(200).send({
             response: eventtype
