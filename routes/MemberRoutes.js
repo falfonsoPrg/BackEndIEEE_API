@@ -2,7 +2,7 @@ const router = require('express').Router()
 const MemberController = require('../controllers/MemberController')
 const bcrypt = require('bcryptjs')
 const multer  = require('multer');
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ dest: 'uploads/member' });
 const { CreateMemberValidation, UpdateMemberValidation} = require('../middlewares/Validation')
 
 router.get('/:member_id', async (req,res)=>{

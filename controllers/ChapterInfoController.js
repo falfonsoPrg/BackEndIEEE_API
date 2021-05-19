@@ -3,14 +3,22 @@ const { ChapterInfo } = require('../database/sequelize')
 ChapterInfoController = {}
 ChapterInfoController.getChapterInfo = async (chapter_info_id) => {
     try {
-        return await ChapterInfo.findByPk(chapter_info_id)
+        return await ChapterInfo.findByPk(chapter_info_id,{
+            include: {
+                all: true
+            }
+        })
     } catch (error) {
         return error
     }
 }
 ChapterInfoController.getChaptersInfo = async () => {
     try {
-        return await ChapterInfo.findAll()
+        return await ChapterInfo.findAll({
+            include: {
+                all: true
+            }
+        })
     } catch (error) {
         return error
     }

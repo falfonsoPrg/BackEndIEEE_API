@@ -3,14 +3,22 @@ const { Role } = require('../database/sequelize')
 RoleController = {}
 RoleController.getRole = async (role_id) => {
     try {
-        return await Role.findByPk(role_id)
+        return await Role.findByPk(role_id,{
+            include: {
+                all: true
+            }
+        })
     } catch (error) {
         return error
     }
 }
 RoleController.getRoles = async () => {
     try {
-        return await Role.findAll()
+        return await Role.findAll({
+            include: {
+                all: true
+            }
+        })
     } catch (error) {
         return error
     }

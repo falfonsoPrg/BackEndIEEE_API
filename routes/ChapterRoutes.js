@@ -2,7 +2,7 @@ const router = require('express').Router()
 const ChapterController = require('../controllers/ChapterController')
 const {CreateChapterValidation,UpdateChapterValidation  } = require('../middlewares/Validation')
 const multer  = require('multer');
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ dest: 'uploads/chapter' });
 
 router.get('/:chapter_id', async (req,res)=>{
     /**

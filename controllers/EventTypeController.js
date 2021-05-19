@@ -3,14 +3,22 @@ const { EventType } = require('../database/sequelize')
 EventTypeController = {}
 EventTypeController.getEventType = async (event_type_id) => {
     try {
-        return await EventType.findByPk(event_type_id)
+        return await EventType.findByPk(event_type_id,{
+            include: {
+                all: true
+            }
+        })
     } catch (error) {
         return error
     }
 }
 EventTypeController.getEventTypes = async () => {
     try {
-        return await EventType.findAll()
+        return await EventType.findAll({
+            include: {
+                all: true
+            }
+        })
     } catch (error) {
         return error
     }

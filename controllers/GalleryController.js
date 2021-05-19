@@ -3,14 +3,22 @@ const { Gallery } = require('../database/sequelize')
 GalleryController = {}
 GalleryController.getGallery = async (gallery_id) => {
     try {
-        return await Gallery.findByPk(gallery_id)
+        return await Gallery.findByPk(gallery_id,{
+            include: {
+                all: true
+            }
+        })
     } catch (error) {
         return error
     }
 }
 GalleryController.getGalleries = async () => {
     try {
-        return await Gallery.findAll()
+        return await Gallery.findAll({
+            include: {
+                all: true
+            }
+        })
     } catch (error) {
         return error
     }

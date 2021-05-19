@@ -3,14 +3,22 @@ const { Event } = require('../database/sequelize')
 EventController = {}
 EventController.getEvent = async (event_id) => {
     try {
-        return await Event.findByPk(event_id)
+        return await Event.findByPk(event_id,{
+            include: {
+                all: true
+            }
+        })
     } catch (error) {
         return error
     }
 }
 EventController.getEvents = async () => {
     try {
-        return await Event.findAll()
+        return await Event.findAll({
+            include: {
+                all: true
+            }
+        })
     } catch (error) {
         return error
     }

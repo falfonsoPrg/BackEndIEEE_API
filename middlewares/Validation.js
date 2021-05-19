@@ -37,8 +37,8 @@ module.exports.UpdateChapterInfoValidation = UpdateChapterInfoValidation = (data
         chapter_info_id: Joi.number().required(),
         mission: Joi.string().required(),
         vission: Joi.string().required(),
-        objectives: Joi.string().required(),
-        chapter_id: Joi.number().required(),
+        objectives: Joi.string(),
+        chapter_id: Joi.number(),
     })
     return schema.validate(data)
 }
@@ -79,10 +79,10 @@ module.exports.CreateEventValidation = CreateEventValidation = (data) => {
 module.exports.UpdateEventValidation = UpdateEventValidation = (data) => {
     const schema = Joi.object({
         event_id: Joi.number().required(),
-        title: Joi.string().required(),
-        description: Joi.string().required(),
-        start_date: Joi.date().required(),
-        end_date: Joi.date().required(),
+        title: Joi.string(),
+        description: Joi.string(),
+        start_date: Joi.date(),
+        end_date: Joi.date(),
         event_type_id: Joi.number().required(),
         chapter_id:Joi.number().required(),
     })
@@ -97,7 +97,7 @@ module.exports.CreateEventTypeValidation = CreateEventTypeValidation = (data) =>
 module.exports.UpdateEventTypeValidation = UpdateEventTypeValidation = (data) => {
     const schema = Joi.object({
         event_type_id: Joi.number().required(),
-        event_type: Joi.string().required(),
+        event_type: Joi.string(),
     })
     return schema.validate(data)
 }

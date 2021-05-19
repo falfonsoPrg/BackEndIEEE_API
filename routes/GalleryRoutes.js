@@ -2,7 +2,7 @@ const router = require('express').Router()
 const GalleryController = require('../controllers/GalleryController')
 const {  CreateGalleryValidation, UpdateGalleryValidation} = require('../middlewares/Validation')
 const multer  = require('multer');
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ dest: 'uploads/gallery' });
 
 router.get('/:gallery_id', async (req,res)=>{
     /**
