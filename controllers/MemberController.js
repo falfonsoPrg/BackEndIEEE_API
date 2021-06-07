@@ -22,7 +22,6 @@ MemberController.getMemberByEmail = async (pEmail) => {
             where:{
                 email: pEmail
             },
-            attributes: {exclude: ['password']}
         })
     } catch (error) {
         return error
