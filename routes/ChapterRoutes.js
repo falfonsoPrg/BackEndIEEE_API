@@ -1,8 +1,13 @@
 const router = require('express').Router()
 const ChapterController = require('../controllers/ChapterController')
 const {CreateChapterValidation,UpdateChapterValidation  } = require('../middlewares/Validation')
-const multer  = require('multer');
-const upload = multer({ dest: 'uploads/chapter' });
+const cloudinary = require('cloudinary').v2
+
+cloudinary.config({ 
+    cloud_name: process.env.CLOUDY_NAME, 
+    api_key: process.env.CLOUDY_KEY, 
+    api_secret: process.env.CLOUDY_KEY_S 
+  });
 
 router.get('/:chapter_id', async (req,res)=>{
     /**
@@ -39,7 +44,7 @@ router.get('/', async (req,res)=>{
     })
 })
 
-router.post('/', upload.single('avatar'), async (req,res)=>{
+router.post('/', async (req,res)=>{
     /**
         #swagger.tags = ['Chapters']
         #swagger.path = '/chapters'
@@ -57,6 +62,15 @@ router.post('/', upload.single('avatar'), async (req,res)=>{
     const {error} = CreateChapterValidation(req.body)
     if(error) return res.status(422).send({
         error: error.details[0].message
+    })
+    await cloudinary.uploader.upload(req.body.logo_path)
+    .then(result =>{
+        req.body.logo_path = result.url
+    })
+    .catch(err=>{
+        return res.status(422).send({
+            error: "Couldn't save the image"
+        })
     })
     const chapter = await ChapterController.createChapter(req.body)
     if(chapter.errors || chapter.name){
