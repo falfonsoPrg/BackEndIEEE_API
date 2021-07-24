@@ -7,7 +7,7 @@ cloudinary.config({
     cloud_name: process.env.CLOUDY_NAME, 
     api_key: process.env.CLOUDY_KEY, 
     api_secret: process.env.CLOUDY_KEY_S 
-  });
+});
 
 router.get('/:chapter_id', async (req,res)=>{
     /**
