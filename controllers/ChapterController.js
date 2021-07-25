@@ -1,12 +1,10 @@
-const { Chapter } = require('../database/sequelize')
+const { Chapter, ChapterMember, ChapterInfo, Event, Member, Role  } = require('../database/sequelize')
 
 ChapterController = {}
 ChapterController.getChapter = async (chapter_id) => {
     try {
         return await Chapter.findByPk(chapter_id,{
-            include: {
-                all: true
-            }
+            include: [{ model: ChapterMember, include: [{ model: Member },{ model: Role }] },{ model: Event },{ model: ChapterInfo }]
         })
     } catch (error) {
         return error
@@ -15,9 +13,7 @@ ChapterController.getChapter = async (chapter_id) => {
 ChapterController.getChapters = async () => {
     try {
         return await Chapter.findAll({
-            include: {
-                all: true
-            }
+            include: [{ model: ChapterMember, include: [{ model: Member },{ model: Role }] },{ model: Event },{ model: ChapterInfo }]
         })
     } catch (error) {
         return error
