@@ -45,4 +45,17 @@ ChapterMemberController.updateChapterMember = async (pChapterMember) => {
     }
 }
 
+ChapterMemberController.deleteChapterMember = async (pChapterMember) => {
+    try {
+        return await ChapterMember.destroy({
+            where: {
+                member_id: pChapterMember.member_id,
+                chapter_id: pChapterMember.chapter_id,
+            }
+        })
+    } catch (error) {
+        return error
+    }
+}
+
 module.exports = ChapterMemberController

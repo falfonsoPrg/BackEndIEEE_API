@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const ChapterMemberController = require('../controllers/ChapterMemberController')
-const {CreateChapterMemberValidation,UpdateChapterMemberValidation  } = require('../middlewares/Validation')
+const {CreateChapterMemberValidation,UpdateChapterMemberValidation, DeleteChapterMemberValidation  } = require('../middlewares/Validation')
 
 router.get('/:chaptermember_id', async (req,res)=>{
     /**
@@ -88,9 +88,32 @@ router.put('/', async (req,res)=>{
 
     const chaptermember = await ChapterMemberController.updateChapterMember(req.body);
     if(chaptermember[0] == 0 || chaptermember.name){
-        console.log(chaptermember)
         return res.status(404).send({
             error: "Couldn't update the ChapterMember"
+        })
+    }
+    return res.status(204).send()
+})
+
+router.delete('/:chapter_id/:member_id', async (req,res)=>{
+    /**
+        #swagger.tags = ['ChaptersMembers']
+        #swagger.path = '/chaptersmembers/{chapter_id}/{member_id}'
+        #swagger.description = 'Endpoint to delete a chaptermember'
+     */
+    const toDelete = {
+        member_id: req.params.member_id,
+        chapter_id: req.params.chapter_id
+    }
+    const {error} = DeleteChapterMemberValidation(toDelete)
+    if(error) return res.status(422).send({
+        error: error.details[0].message
+    })
+
+    const chaptermember = await ChapterMemberController.deleteChapterMember(toDelete);
+    if(chaptermember === 0){
+        return res.status(404).send({
+            error: "Couldn't delete the ChapterMember"
         })
     }
     return res.status(204).send()

@@ -40,7 +40,10 @@ const doc = {
             "start_date":"",
             "end_date":""
         },
-        
+        ChapterMemberDelete:{
+            "chapter_id":0,
+            "member_id":0
+        },
         Event:{
            "title":"",
            "description":"",

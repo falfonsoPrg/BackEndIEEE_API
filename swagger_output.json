@@ -317,6 +317,39 @@
         }
       }
     },
+    "/chaptersmembers/{chapter_id}/{member_id}": {
+      "delete": {
+        "tags": [
+          "ChaptersMembers"
+        ],
+        "description": "Endpoint to delete a chaptermember",
+        "parameters": [
+          {
+            "name": "chapter_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "member_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
+    },
     "/events/{event_id}": {
       "get": {
         "tags": [
@@ -890,6 +923,19 @@
         "end_date": {
           "type": "string",
           "example": ""
+        }
+      }
+    },
+    "ChapterMemberDelete": {
+      "type": "object",
+      "properties": {
+        "chapter_id": {
+          "type": "number",
+          "example": 0
+        },
+        "member_id": {
+          "type": "number",
+          "example": 0
         }
       }
     },

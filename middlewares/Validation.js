@@ -65,6 +65,13 @@ module.exports.UpdateChapterMemberValidation = UpdateChapterMemberValidation = (
     })
     return schema.validate(data)
 }
+module.exports.DeleteChapterMemberValidation = DeleteChapterMemberValidation = (data) => {
+    const schema = Joi.object({
+        member_id: Joi.number().required(),
+        chapter_id: Joi.number().required()
+    })
+    return schema.validate(data)
+}
 module.exports.CreateEventValidation = CreateEventValidation = (data) => {
     const schema = Joi.object({
         title: Joi.string().required(),
