@@ -1,4 +1,4 @@
-const { Member } = require('../database/sequelize')
+const { Member, ChapterMember, Role, Chapter } = require('../database/sequelize')
 
 MemberController = {}
 MemberController.getMember = async (member_id) => {
@@ -22,6 +22,7 @@ MemberController.getMemberByEmail = async (pEmail) => {
             where:{
                 email: pEmail
             },
+            include: [{ model: ChapterMember, include: [{ model: Role },{model: Chapter}] }]
         })
     } catch (error) {
         return error

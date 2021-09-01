@@ -14,8 +14,9 @@ router.post('/login', async (req,res) => {
     const token = jwt.sign({document:member.document},process.env.JWTOKEN,{
         expiresIn: "1d"
     })
-    delete member.password
-    res.header('auth-token',token).send({token:token, member:member})
+    let rta = member.dataValues
+    delete rta.password
+    res.header('auth-token',token).send({token: token, member: rta})
 })
 
 module.exports = router;
