@@ -102,6 +102,22 @@ router.put('/', async (req,res)=>{
         error: error.details[0].message
     })
 
+    if(req.body.logo_path && req.body.logo_path !== ""){
+        var matchesUrl = req.body.logo_path.match(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/)
+        if(!matchesUrl){
+            var matches = req.body.logo_path.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/)
+            if (matches.length !== 3) {
+                return res.status(422).send({
+                    error: "The image have an incorrect format"
+                })
+            }
+            await cloudinary.uploader.upload(req.body.logo_path)
+            .then(result =>{
+                req.body.logo_path = result.url
+            })
+        }
+    }
+
     const chapter = await ChapterController.updateChapter(req.body);
     if(chapter[0] == 0 || chapter.name){
         return res.status(404).send({
