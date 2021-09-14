@@ -59,7 +59,9 @@ router.post('/', async (req,res)=>{
 
     const event = await EventController.createEvent(req.body)
     if(event.errors || event.name){
+        console.log(event.errors)
         return res.status(400).send({
+            
             error: "Couldn't save the event"
         })
     }

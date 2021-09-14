@@ -49,7 +49,7 @@ MemberController.createMember = async (pMember) => {
 
 MemberController.updateMember = async (pMember) => {
     try {
-        return await Member.update(pMember,{
+        return await Mwember.update(pMember,{
             where: {
                 member_id: pMember.member_id
             }
