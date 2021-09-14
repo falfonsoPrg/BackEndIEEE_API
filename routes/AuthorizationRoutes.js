@@ -42,13 +42,13 @@ router.post('/recoverPassword', async (req,res) => {
     let mailOptions = {
         from: process.env.EMAIL,
         to: req.body.email, 
-        subject: 'Nodemailer - Test',
-        text: 'Wooohooo it works!!'
+        subject: 'New Password',
+        text: 'This will be your new password IEEE'
     };  
   
      transporter.sendMail(mailOptions, (err, data) => {
         if (err) {
-            return res.status(402).send(err)
+            return res.status(402).send(err+data)
         }
         return res.status(200).send("work");
     });

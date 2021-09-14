@@ -4,6 +4,8 @@ module.exports.CreateChapterValidation = CreateChapterValidation = (data) => {
     const schema = Joi.object({
         chapter_name: Joi.string().required(),
         description: Joi.string().required(),
+        acronym: Joi.string().required(),
+        icon: Joi.string().required(),
         logo_path: Joi.string().required(),
         start_date: Joi.date().required(),
         end_date: Joi.date(),
@@ -16,6 +18,8 @@ module.exports.UpdateChapterValidation = UpdateChapterValidation = (data) => {
         chapter_id: Joi.number().required(),
         chapter_name: Joi.string(),
         description: Joi.string(),
+        acronym: Joi.string(),
+        icon: Joi.string(),
         logo_path: Joi.string(),
         start_date: Joi.date(),
         end_date: Joi.date(),
@@ -133,8 +137,8 @@ module.exports.CreateMemberValidation = CreateMemberValidation = (data) => {
     const schema = Joi.object({
         firstname: Joi.string().required(),
         lastname: Joi.string().required(),
-        email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['co'] } }).required(),
-        password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
+        email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: false } }).required(),
+        password: Joi.string().pattern(new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{4,}$')).required(),//(?=.*?[#?!@$%^&*-])
         document: Joi.number().required(),
         phone: Joi.number().required(),
         image_path: Joi.string().required()
@@ -146,8 +150,8 @@ module.exports.UpdateMemberValidation = UpdateMemberValidation = (data) => {
         member_id: Joi.number().required(),
         firstname: Joi.string(),
         lastname: Joi.string(),
-        email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['co'] } }),
-        password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
+        email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: false } }),
+        password: Joi.string().pattern(new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{4,}$')),
         document: Joi.number(),
         phone: Joi.number(),
         image_path: Joi.string()

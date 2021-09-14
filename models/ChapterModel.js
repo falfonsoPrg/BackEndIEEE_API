@@ -12,6 +12,14 @@ module.exports = (sequelize)  => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        acronym:{
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        icon:{
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         description:{
             type: DataTypes.STRING,
             allowNull: true
