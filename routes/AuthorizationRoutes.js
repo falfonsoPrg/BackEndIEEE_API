@@ -27,9 +27,10 @@ router.post('/login', async (req,res) => {
 
 router.post('/recoverPassword', async (req,res) => {
     const member = await MemberController.getMemberByEmail(req.body.email)
-    if(member == null) return res.status(401).send({error: "Couldn't found that member"})
+    if(member == null) return res.status(404).send({error: "Couldn't found that member"})
   
-    
+    var randomstring = Math.random().toString(36).slice(-8);
+
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -37,18 +38,34 @@ router.post('/recoverPassword', async (req,res) => {
             pass: process.env.PASSWORD  
         }
     });
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(randomstring, salt)
   
-  
+    const user = {
+        member_id: member.member_id,
+        password: hashedPassword
+    }
+    
+    const memberUpdated = await MemberController.updateMember(user)
+
+
+    if(memberUpdated[0] == 0 || memberUpdated.name){
+        return res.status(404).send({
+            error: "Couldn't update the member"
+        })
+    }
+
     let mailOptions = {
         from: process.env.EMAIL,
         to: req.body.email, 
         subject: 'New Password',
-        text: 'This will be your new password IEEE'
+        text: 'This will be your new password IEEE -> '+ randomstring
     };  
   
      transporter.sendMail(mailOptions, (err, data) => {
+
         if (err) {
-            return res.status(402).send(err+data)
+            return res.status(404).send(err+data)
         }
         return res.status(200).send("work");
     });
