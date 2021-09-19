@@ -59,4 +59,16 @@ MemberController.updateMember = async (pMember) => {
     }
 }
 
+MemberController.deleteMember = async (pMember) => {
+    try {
+        return await Member.destroy({
+            where: {
+                member_id: pMember.member_id
+            }
+        })
+    } catch (error) {
+        return error
+    }
+}
+
 module.exports = MemberController

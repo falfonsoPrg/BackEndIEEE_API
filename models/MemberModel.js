@@ -39,6 +39,10 @@ module.exports = (sequelize)  => {
         image_path: {
             type: DataTypes.STRING,
             allowNull:true
+        },
+        update_password: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true
         }
     })
 }

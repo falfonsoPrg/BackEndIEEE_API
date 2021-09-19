@@ -669,6 +669,31 @@
             "description": "Not Found"
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Members"
+        ],
+        "description": "Endpoint to delete one member",
+        "parameters": [
+          {
+            "name": "member_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
       }
     },
     "/members": {
@@ -711,6 +736,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "404": {
+            "description": "Not Found"
+          },
           "422": {
             "description": "Unprocessable Entity"
           }
@@ -722,6 +750,43 @@
         ],
         "description": "Endpoint to update a member",
         "parameters": [
+          {
+            "name": "body",
+            "description": "description",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Member"
+            },
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
+    },
+    "/members/{member_id}/changePassword": {
+      "put": {
+        "tags": [
+          "Members"
+        ],
+        "description": "Endpoint to update password for a member",
+        "parameters": [
+          {
+            "name": "member_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "body",
             "description": "description",

@@ -141,7 +141,8 @@ module.exports.CreateMemberValidation = CreateMemberValidation = (data) => {
         password: Joi.string().pattern(new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{4,}$')).required(),//(?=.*?[#?!@$%^&*-])
         document: Joi.number().required(),
         phone: Joi.number().required(),
-        image_path: Joi.string().required()
+        image_path: Joi.string().required(),
+        default_image: Joi.bool()
     })
     return schema.validate(data)
 }
@@ -151,10 +152,17 @@ module.exports.UpdateMemberValidation = UpdateMemberValidation = (data) => {
         firstname: Joi.string(),
         lastname: Joi.string(),
         email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: false } }),
-        password: Joi.string().pattern(new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{4,}$')),
+        password: Joi.string().pattern(new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{4,}$')),//One upper case, one lower case, one number and min 4 characters
         document: Joi.number(),
         phone: Joi.number(),
-        image_path: Joi.string()
+        image_path: Joi.string(),
+        default_image: Joi.bool()
+    })
+    return schema.validate(data)
+}
+module.exports.DeleteMemberValidation = DeleteMemberValidation = (data) => {
+    const schema = Joi.object({
+        member_id: Joi.number().required(),
     })
     return schema.validate(data)
 }
