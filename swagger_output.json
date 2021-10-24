@@ -350,6 +350,30 @@
         }
       }
     },
+    "/events/byChapter/{chapter_id}": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "description": "Endpoint to get one event from a chapter",
+        "parameters": [
+          {
+            "name": "chapter_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
     "/events/{event_id}": {
       "get": {
         "tags": [

@@ -1,6 +1,20 @@
 const { Event } = require('../database/sequelize')
 
 EventController = {}
+EventController.getEventByChapter = async (chapter_id) => {
+    try {
+        return await Event.findAll({
+            where:{
+                chapter_id: chapter_id
+            },
+            include: {
+                all: true
+            }
+        })
+    } catch (error) {
+        return error
+    }
+}
 EventController.getEvent = async (event_id) => {
     try {
         return await Event.findByPk(event_id,{

@@ -1,8 +1,12 @@
 const router = require('express').Router()
 const GalleryController = require('../controllers/GalleryController')
 const {  CreateGalleryValidation, UpdateGalleryValidation} = require('../middlewares/Validation')
-const multer  = require('multer');
-const upload = multer({ dest: 'uploads/gallery' });
+const cloudinary = require('cloudinary').v2
+cloudinary.config({ 
+    cloud_name: process.env.CLOUDY_NAME, 
+    api_key: process.env.CLOUDY_KEY, 
+    api_secret: process.env.CLOUDY_KEY_S 
+});
 
 router.get('/:gallery_id', async (req,res)=>{
     /**
@@ -39,7 +43,7 @@ router.get('/', async (req,res)=>{
     })
 })
 
-router.post('/', upload.single('avatar'), async (req,res)=>{
+router.post('/', async (req,res)=>{
     /**
         #swagger.tags = ['Galleries']
         #swagger.path = '/galleries'
@@ -58,6 +62,23 @@ router.post('/', upload.single('avatar'), async (req,res)=>{
     if(error) return res.status(422).send({
         error: error.details[0].message
     })
+
+    var matches = req.body.path.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/)
+    if (matches.length !== 3) {
+        return res.status(422).send({
+            error: "The image have an incorrect format"
+        })
+    }
+    await cloudinary.uploader.upload(req.body.path)
+    .then(result =>{
+        req.body.path = result.url
+    })
+    .catch(err=>{
+        return res.status(422).send({
+            error: "Couldn't save the image"
+        })
+    })   
+
     const gallery = await GalleryController.createGallery(req.body)
     if(gallery.errors || gallery.name){
         return res.status(400).send({

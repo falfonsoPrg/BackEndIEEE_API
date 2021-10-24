@@ -2,6 +2,24 @@ const router = require('express').Router()
 const EventController = require('../controllers/EventController')
 const { CreateEventValidation,UpdateEventValidation } = require('../middlewares/Validation')
 
+router.get('/byChapter/:chapter_id', async (req,res)=>{
+    /**
+        #swagger.tags = ['Events']
+        #swagger.path = '/events/byChapter/{chapter_id}'
+        #swagger.description = 'Endpoint to get one event from a chapter'
+     */
+    const chapter_id = req.params.chapter_id
+    const event = await EventController.getEventByChapter(chapter_id)
+    if(event){
+        return res.status(200).send({
+            response: event
+        })
+    }
+    return res.status(404).send({
+        error: "Couldn't found that event"
+    })
+})
+
 router.get('/:event_id', async (req,res)=>{
     /**
         #swagger.tags = ['Events']
