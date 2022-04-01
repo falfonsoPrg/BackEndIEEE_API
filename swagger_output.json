@@ -857,6 +857,31 @@
             "description": "Not Found"
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Roles"
+        ],
+        "description": "Endpoint to delete a role",
+        "parameters": [
+          {
+            "name": "role_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
       }
     },
     "/roles": {
