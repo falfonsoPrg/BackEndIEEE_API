@@ -94,6 +94,25 @@ router.put('/', async (req,res)=>{
     }
     return res.status(204).send()
 })
-
+router.delete('/:role_id', async (req,res)=>{
+    /**
+        #swagger.tags = ['Roles']
+        #swagger.path = '/roles/{role_id}'
+        #swagger.description = 'Endpoint to delete a role'
+     */
+    const role_id = req.params.role_id
+    const error = DeleteRoleValidation(req.body)
+    if(error) return res.status(422).send({
+        error: error.details[0].message
+    })
+    
+    const role = await RoleController.deleteRole(role_id)
+    if(role === 0){
+        return res.status(404).send({
+            error: "Couldn't delete the Role"
+        })
+    }
+    return res.status(204).send()
+})
 
 module.exports = router;

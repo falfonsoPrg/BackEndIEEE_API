@@ -187,7 +187,12 @@ module.exports.UpdateRoleValidation = UpdateRoleValidation = (data) => {
     })
     return schema.validate(data)
 }
-
+module.exports.DeleteRoleValidation = DeleteRoleValidation = (data) => {
+    const schema = Joi.object({
+        role_id: Joi.number().required(),
+    })
+    return schema.validate(data)
+}
 
 
 

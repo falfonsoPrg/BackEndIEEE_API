@@ -42,5 +42,16 @@ RoleController.updateRole = async (pRole) => {
         return error
     }
 }
+RoleController.deleteRole = async (pRole) => {
+    try {
+        return await Role.destroy({
+            where: {
+                role_id: pRole.role_id
+            }
+        })
+    } catch (error) {
+        return error
+    }
+}
 
 module.exports = RoleController
