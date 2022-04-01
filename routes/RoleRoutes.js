@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const RoleController = require('../controllers/RoleController')
-const { CreateRoleValidation,UpdateRoleValidation } = require('../middlewares/Validation')
+const { CreateRoleValidation,UpdateRoleValidation, DeleteRoleValidation } = require('../middlewares/Validation')
 
 router.get('/:role_id', async (req,res)=>{
     /**
