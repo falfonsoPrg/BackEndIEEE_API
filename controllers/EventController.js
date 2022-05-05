@@ -56,5 +56,16 @@ EventController.updateEvent = async (pEvent) => {
         return error
     }
 }
+EventController.deleteEvent = async (pEvent) => {
+    try {
+        return await Event.destroy({
+            where: {
+                event_id: pEvent.event_id
+            }
+        })
+    } catch (error) {
+        return error
+    }
+}
 
 module.exports = EventController

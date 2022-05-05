@@ -99,6 +99,13 @@ module.exports.UpdateEventValidation = UpdateEventValidation = (data) => {
     })
     return schema.validate(data)
 }
+module.exports.DeleteEventValidation = DeleteEventValidation = (data) => {
+    const schema = Joi.object({
+        event_id: Joi.number().required(),
+    })
+    console.log(data)
+    return schema.validate(data)
+}
 module.exports.CreateEventTypeValidation = CreateEventTypeValidation = (data) => {
     const schema = Joi.object({
         event_type: Joi.string().required(),

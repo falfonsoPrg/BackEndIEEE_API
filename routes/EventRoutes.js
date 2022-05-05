@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const EventController = require('../controllers/EventController')
-const { CreateEventValidation,UpdateEventValidation } = require('../middlewares/Validation')
+const { CreateEventValidation,UpdateEventValidation, DeleteEventValidation } = require('../middlewares/Validation')
 
 router.get('/byChapter/:chapter_id', async (req,res)=>{
     /**
@@ -77,7 +77,6 @@ router.post('/', async (req,res)=>{
 
     const event = await EventController.createEvent(req.body)
     if(event.errors || event.name){
-        console.log(event.errors)
         return res.status(400).send({
             
             error: "Couldn't save the event"
@@ -116,5 +115,24 @@ router.put('/', async (req,res)=>{
     return res.status(204).send()
 })
 
-
+router.delete('/:event_id', async (req,res)=>{
+    /**
+        #swagger.tags = ['Events']
+        #swagger.path = '/events/{event_id}'
+        #swagger.description = 'Endpoint to delete a event'
+     */
+    const toDelete = {
+        event_id: req.params.event_id
+    }
+    const {error} = DeleteEventValidation(toDelete)
+    if(error) return res.status(422).send({
+        error: error.details[0].message
+    })
+    const event = await EventController.deleteEvent(toDelete)
+    if(event == 0){
+        return res.status(404).send({
+            error: "Couldn't delete the event"
+        })
+    }
+})
 module.exports = router;

@@ -396,6 +396,28 @@
             "description": "Not Found"
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Events"
+        ],
+        "description": "Endpoint to delete a event",
+        "parameters": [
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
       }
     },
     "/events": {
