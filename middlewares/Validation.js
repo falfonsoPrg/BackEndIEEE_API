@@ -103,7 +103,6 @@ module.exports.DeleteEventValidation = DeleteEventValidation = (data) => {
     const schema = Joi.object({
         event_id: Joi.number().required(),
     })
-    console.log(data)
     return schema.validate(data)
 }
 module.exports.CreateEventTypeValidation = CreateEventTypeValidation = (data) => {
