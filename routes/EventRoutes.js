@@ -134,5 +134,6 @@ router.delete('/:event_id', async (req,res)=>{
             error: "Couldn't delete the event"
         })
     }
+    return res.status(204).send()
 })
 module.exports = router;
